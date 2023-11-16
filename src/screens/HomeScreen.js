@@ -7,7 +7,7 @@ import Message from '../components/Message';
 
 import { listProducts } from '../actions/productActions'
 
-function HomeScreen() {
+function HomeScreen({ history }) {
     const dispatch = useDispatch()
     const productList = useSelector(state => state.productList)
     const { error, loading, products } = productList
@@ -25,16 +25,14 @@ function HomeScreen() {
                 : error ? <Message variant='danger'>{error}</Message>
                 :        
                 <Row>
-                    { products.map(product => (
+                    { products.map(product => [
                         <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
                             <h2>{product.name}</h2>
                             <Product product={product}/>
                         </Col>
-                    ))}
+                    ])}
                 </Row>
         }
-
-
         </div>
     )
 }
