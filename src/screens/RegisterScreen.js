@@ -49,6 +49,7 @@ function RegisterScreen({location, history}) {
                     <Form.Group controlId='name'>
                         <Form.Label>Name</Form.Label>
                         <Form.Control
+                            required
                             type='name'
                             placeholder='Enter Name'
                             value={name}

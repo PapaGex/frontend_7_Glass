@@ -5,14 +5,18 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { LinkContainer } from 'react-router-bootstrap';
+import SearchBox from './SearchBox';
+import { logout } from '../actions/userActions';
 
 function Header() {
 
     const userLogin = useSelector(state => state.userLogin)
     const {userInfo} = userLogin
 
+    const dispatch = useDispatch()
+
     const logoutHandler = () => {
-        console.log('logout')
+        dispatch(logout())
     }
 
 
@@ -24,6 +28,7 @@ function Header() {
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
+                    <SearchBox />
                     <Nav className="me-auto">
                         <LinkContainer to='/'>
                             <Nav.Link>Home</Nav.Link>
